@@ -1,8 +1,0 @@
-server:
-  port: "8080"
-
-db:
-  Host: "localhost"
-  Port: 5432
-  Username: "postgres"
-  DBName: "attendance-telegram-bot"
