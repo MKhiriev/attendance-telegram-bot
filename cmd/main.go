@@ -1,7 +1,9 @@
 package main
 
 import (
+	"attendance-telegram-bot/internal/bot/handlers"
 	"attendance-telegram-bot/internal/database"
+	"attendance-telegram-bot/internal/services"
 	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 	"log"
@@ -16,7 +18,10 @@ func main() {
 	}
 	conn := database.NewConnectPostgres()
 	repositories := database.NewDatabase(conn)
-	log.Println(repositories) // delete me
+	service := services.NewService(repositories)
+	handler := handlers.NewHandler(service)
+	// TODO add bot starter method
+	log.Println(handler) // delete me
 }
 
 func InitConfig() error {
